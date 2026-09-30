@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Game-free tests: only the pure logic files are linked in, so this runs without Nuclear Option installed. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\NoMissileIndicators\Missiles\ScreenEdge.cs" Link="Missiles\ScreenEdge.cs" />
+    <Compile Include="..\..\src\NoMissileIndicators\Tracking\KnownPositions.cs" Link="Tracking\KnownPositions.cs" />
+    <Compile Include="..\..\src\NoMissileIndicators\OldSettingsImport.cs" Link="OldSettingsImport.cs" />
+    <None Include="Fixtures\*.cfg" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
