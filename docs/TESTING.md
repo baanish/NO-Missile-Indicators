@@ -13,7 +13,7 @@ dotnet run --project tests/NoMissileIndicators.Tests -c Release
 - arrow placement (`ScreenEdge`): none on screen, the matching edge off screen, and the correct side for a missile behind you, above and behind, or dead astern;
 - tracked positions (`KnownPositions`): live, stale, first seen stale, and never known;
 - copying the old settings (`OldSettingsImport`): a real Baanish UI Improvements 0.4.0 settings file, the 0.5.0 section layout, which layout wins, a saved value of this mod's own stopping the copy, and no old file;
-- the PvP rule (`PvpRule`): single player, co-op against AI, humans only on your side, one hostile human, a faction change, a player with no faction yet, and an unreadable faction or player list.
+- the PvP rule (`PvpRule`): single player, co-op against AI, humans only on your side, one hostile human, a faction change, a player with no faction yet counting as PvP, and an unreadable faction or player list.
 
 The suite doesn't start Unity or the game. It doesn't cover drawing, reading the game's missile warning, HUD markers, or player list, or game-version compatibility.
 

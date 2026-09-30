@@ -7,7 +7,7 @@ public enum PvpVerdict
     /// <summary>Single player, co-op against AI, or other humans only on your side.</summary>
     NotPvp,
 
-    /// <summary>At least one other human is on a faction that isn't yours.</summary>
+    /// <summary>At least one other human isn't on your faction: on another one, or not on one yet.</summary>
     Pvp,
 
     /// <summary>A multiplayer game where the mod can't read your faction or the player list.</summary>
@@ -15,9 +15,10 @@ public enum PvpVerdict
 }
 
 /// <summary>
-/// Whether a game is player versus player: multiplayer, with at least one other human on a faction other than yours.
+/// Whether a game is player versus player: multiplayer, with at least one other human who isn't on your faction.
 /// Any other faction counts as hostile, as it does for the game when it adds AI aircraft per enemy player
-/// (<c>FactionHQ.DeployAIAircraft</c>). Factions are compared with <see cref="object.Equals(object, object)"/>, so the
+/// (<c>FactionHQ.DeployAIAircraft</c>). So does a human who hasn't picked a faction yet, still joining or watching: they
+/// may well pick the other side, and the arrows mustn't be on when they do. Factions are compared with <see cref="object.Equals(object, object)"/>, so the
 /// caller passes the game's faction objects and the tests pass names.
 /// </summary>
 public static class PvpRule
@@ -45,7 +46,7 @@ public static class PvpRule
 
         foreach (var faction in otherPlayers)
         {
-            if (faction is not null && !Equals(faction, localFaction))
+            if (!Equals(faction, localFaction))
             {
                 return PvpVerdict.Pvp;
             }

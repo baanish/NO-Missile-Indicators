@@ -12,7 +12,7 @@ Only missiles the game's missile warning already knows about get an arrow, and e
 
 The arrows are off in player-versus-player games unless you turn on **Allow in PvP**. Against another player, an arrow toward every incoming missile may be a competitive advantage, so only turn it on when the other players know and agree.
 
-A game counts as PvP when it's multiplayer and at least one other human player is on a faction other than yours. The mod also keeps the arrows off in a multiplayer game while it can't tell, such as before you've picked a faction. It checks once a second, so the arrows go or come back within a second of a player joining, leaving, or picking a faction.
+A game counts as PvP when it's multiplayer and at least one other human player isn't on your faction. That includes a player still joining, or watching before picking a side, since they may pick the other one. The mod also keeps the arrows off in a multiplayer game while it can't tell, such as before you've picked a faction. It checks once a second, so the arrows go or come back within a second of a player joining, leaving, or picking a faction.
 
 | Game | Arrows |
 | --- | --- |
@@ -20,14 +20,15 @@ A game counts as PvP when it's multiplayer and at least one other human player i
 | Multiplayer, co-op against AI | Shown |
 | Multiplayer, other humans only on your side | Shown |
 | Multiplayer, another human on a hostile faction | Off, unless **Allow in PvP** is on |
+| Multiplayer, another human who hasn't picked a side yet | Off, unless **Allow in PvP** is on |
 | Multiplayer, before you pick a faction | Off, unless **Allow in PvP** is on |
 
-In F1, the **Allow in PvP** row also says what the arrows are doing right now and why, such as `Now: shown, not a PvP game` or `Now: hidden, a player is on a hostile side`.
+In F1, the **Allow in PvP** row also says what the arrows are doing right now and why, such as `Now: shown, not a PvP game` or `Now: hidden, a player isn't on your side`.
 
 `BepInEx/LogOutput.log` gets one line when the arrows go and one when they come back, such as:
 
 ```text
-[Info   :NO Missile Indicators] Missile arrows hidden: another player is on a hostile faction. Missile Arrows > Allow in PvP overrides this.
+[Info   :NO Missile Indicators] Missile arrows hidden: another player isn't on your faction. Missile Arrows > Allow in PvP overrides this.
 ```
 
 ## Settings

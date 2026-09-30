@@ -45,7 +45,7 @@ Against another player, an arrow toward every missile the warning knows may be a
 - **Your faction**: `Player.HQ` of the local player (`GameManager.GetLocalPlayer`), null until you pick one.
 - **Everyone else's faction**: `Player.HQ` of each other entry in `UnitRegistry.playerLookup`, which every `Player` joins as its network object starts on this client. `Player` is a human connection. AI aircraft have none.
 
-Any faction other than yours counts as hostile, as it does for the game when `FactionHQ.DeployAIAircraft` counts enemy players. A player who hasn't picked a faction counts as no one's. The verdict is PvP when any other player is on another faction, and unknown when the local player or its faction can't be read. Both hide the arrows unless **Allow in PvP** is on. Once a second is plenty for players joining, leaving, or picking a faction, and it saves walking the player list every frame. The gate logs one line when the arrows go and one when they come back. `PvpRule` is Unity-free and unit-tested.
+Any faction other than yours counts as hostile, as it does for the game when `FactionHQ.DeployAIAircraft` counts enemy players. A player who hasn't picked a faction yet counts too: still joining or watching, they may pick the other side. The verdict is PvP when any other player isn't on your faction, and unknown when the local player or its faction can't be read. Both hide the arrows unless **Allow in PvP** is on. Once a second is plenty for players joining, leaving, or picking a faction, and it saves walking the player list every frame. The gate logs one line when the arrows go and one when they come back. `PvpRule` is Unity-free and unit-tested.
 
 ## Settings
 

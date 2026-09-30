@@ -12,7 +12,7 @@ The mod only draws on your screen. It doesn't patch the game and sends nothing o
 
 ## Off in PvP unless you turn it on
 
-In a player-versus-player game the arrows are off by default. That's any multiplayer game where another human player is on a hostile faction, or where the mod can't tell. Against another player, an arrow toward every incoming missile may be a competitive advantage, even though it only shows what the game's warning knows. **Missile Arrows → Allow in PvP** turns them on there. Only do that when the other players know and agree.
+In a player-versus-player game the arrows are off by default. That's any multiplayer game where another human player isn't on your faction, including one still joining or watching before picking a side, or where the mod can't tell. Against another player, an arrow toward every incoming missile may be a competitive advantage, even though it only shows what the game's warning knows. **Missile Arrows → Allow in PvP** turns them on there. Only do that when the other players know and agree.
 
 Single player, co-op against AI, and multiplayer with other humans only on your side are not PvP, so the arrows show there.
 

@@ -49,7 +49,7 @@ Start the game, then open `BepInEx/LogOutput.log` and look for:
 
 The version matches the one you installed. If the line is missing, check that the DLL sits at `BepInEx/plugins/NoMissileIndicators/NoMissileIndicators.dll` and that BepInEx wrote its log at all.
 
-In a player-versus-player game the arrows stay off even when the mod has loaded. The log says `Missile arrows hidden: another player is on a hostile faction.` The [user guide](USER_GUIDE.md#off-in-pvp-by-default) explains the rule and the **Allow in PvP** setting.
+In a player-versus-player game the arrows stay off even when the mod has loaded. The log says `Missile arrows hidden: another player isn't on your faction.` The [user guide](USER_GUIDE.md#off-in-pvp-by-default) explains the rule and the **Allow in PvP** setting.
 
 ## Coming from Baanish UI Improvements
 

@@ -12,7 +12,7 @@ internal static class PvpRuleTests
         ("other humans only on your side is not PvP", HumansOnlyOnYourSideIsNotPvp),
         ("one hostile human is PvP", OneHostileHumanIsPvp),
         ("a player changing faction changes the verdict", FactionChangeChangesVerdict),
-        ("a player with no faction yet is not hostile", NoFactionYetIsNotHostile),
+        ("a player with no faction yet counts as PvP", NoFactionYetIsPvp),
         ("an unreadable faction or player list is unknown", UnreadableIsUnknown),
     };
 
@@ -34,8 +34,12 @@ internal static class PvpRuleTests
         ExpectVerdict(PvpRule.Judge(true, "Primeva", new object?[] { "Primeva" }), PvpVerdict.NotPvp);
     }
 
-    private static void NoFactionYetIsNotHostile() =>
-        ExpectVerdict(PvpRule.Judge(true, "Boscali", new object?[] { null }), PvpVerdict.NotPvp);
+    /// <summary>Still joining or watching before picking a side: they may pick the other one.</summary>
+    private static void NoFactionYetIsPvp()
+    {
+        ExpectVerdict(PvpRule.Judge(true, "Boscali", new object?[] { null }), PvpVerdict.Pvp);
+        ExpectVerdict(PvpRule.Judge(true, "Boscali", new object?[] { "Boscali", null }), PvpVerdict.Pvp);
+    }
 
     private static void UnreadableIsUnknown()
     {

@@ -34,7 +34,7 @@ internal sealed class PvpGate
         : _verdict switch
         {
             PvpVerdict.NotPvp => "Now: shown, not a PvP game",
-            PvpVerdict.Pvp => _settings.AllowInPvp.Value ? "Now: shown in a PvP game" : "Now: hidden, a player is on a hostile side",
+            PvpVerdict.Pvp => _settings.AllowInPvp.Value ? "Now: shown in a PvP game" : "Now: hidden, a player isn't on your side",
             _ => _settings.AllowInPvp.Value ? "Now: shown" : "Now: hidden until the players are known",
         };
 
@@ -52,10 +52,10 @@ internal sealed class PvpGate
             _hiding = hiding;
             _logger.LogInfo(hiding switch
             {
-                true when _verdict == PvpVerdict.Pvp => "Missile arrows hidden: another player is on a hostile faction. Missile Arrows > Allow in PvP overrides this.",
+                true when _verdict == PvpVerdict.Pvp => "Missile arrows hidden: another player isn't on your faction. Missile Arrows > Allow in PvP overrides this.",
                 true => "Missile arrows hidden until the mod can tell whether this is a player-versus-player game.",
                 false when _settings.AllowInPvp.Value => "Missile arrows shown: Allow in PvP is on.",
-                false => "Missile arrows shown: no other player is on a hostile faction.",
+                false => "Missile arrows shown: every other player is on your faction.",
             });
         }
 
