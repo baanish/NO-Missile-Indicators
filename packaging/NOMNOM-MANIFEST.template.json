@@ -1,0 +1,33 @@
+{
+  "id": "NoMissileIndicators",
+  "displayName": "NO Missile Indicators",
+  "description": "A red arrow on the screen edge toward each incoming missile outside your view, pointing the way to turn. Only missiles the game's missile warning already knows about get one. Off in player-versus-player games unless you allow it.",
+  "tags": [
+    "QoL",
+    "UI"
+  ],
+  "urls": [
+    {
+      "name": "info",
+      "url": "https://github.com/baanish/NO-Missile-Indicators"
+    }
+  ],
+  "authors": [
+    "baanish"
+  ],
+  "isClientOrServer": "Client",
+  "githubOwner": "baanish",
+  "githubRepoName": "NO-Missile-Indicators",
+  "autoUpdateArtifacts": "True",
+  "artifacts": [
+    {
+      "fileName": "NoMissileIndicators-v@VERSION@-nomm.zip",
+      "version": "@VERSION@",
+      "category": "preRelease",
+      "type": "plugin",
+      "gameVersion": "0.34.2",
+      "downloadUrl": "https://github.com/baanish/NO-Missile-Indicators/releases/download/v@VERSION@/NoMissileIndicators-v@VERSION@-nomm.zip",
+      "hash": "sha256:@SHA256@"
+    }
+  ]
+}
