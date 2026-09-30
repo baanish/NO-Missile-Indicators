@@ -22,6 +22,8 @@ A game counts as PvP when it's multiplayer and at least one other human player i
 | Multiplayer, another human on a hostile faction | Off, unless **Allow in PvP** is on |
 | Multiplayer, before you pick a faction | Off, unless **Allow in PvP** is on |
 
+In F1, the **Allow in PvP** row also says what the arrows are doing right now and why, such as `Now: shown, not a PvP game` or `Now: hidden, a player is on a hostile side`.
+
 `BepInEx/LogOutput.log` gets one line when the arrows go and one when they come back, such as:
 
 ```text

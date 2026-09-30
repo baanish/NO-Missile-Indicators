@@ -22,7 +22,7 @@ internal sealed class ModSettings
         Enabled = Bind("General", "Enabled", true, "Enabled", "Off hides everything this mod draws, as if it were not installed. Useful for checking whether a problem comes from the mod or the game.");
 
         ShowMissileArrows = Bind("Missile Arrows", "ShowArrows", true, "Show missile arrows", "Point an arrow from the screen edge at each incoming missile outside the view. Only missiles the game's missile warning already knows about get one.");
-        AllowInPvp = Bind("Missile Arrows", "AllowInPvp", false, "Allow in PvP", "Also show the arrows in player-versus-player games, where another human player is on a hostile faction. There the arrows may be a competitive advantage, so only turn this on when the other players know and agree.");
+        AllowInPvp = Bind("Missile Arrows", "AllowInPvp", false, "Allow in PvP", "Also show the arrows in player-versus-player games, where another human player is on a hostile faction. There the arrows may be a competitive advantage, so only turn this on when the other players know and agree.", DrawAllowInPvp);
         MissileArrowColor = Bind("Missile Arrows", "Color", new Color(1f, 0.25f, 0.2f, 1f), "Arrow colour", "Colour of the missile arrows.");
     }
 
@@ -34,10 +34,24 @@ internal sealed class ModSettings
 
     public ConfigEntry<Color> MissileArrowColor { get; }
 
+    /// <summary>What the arrows are doing right now and why, shown beside Allow in PvP; set by the plugin to <see cref="PvpGate.Status"/>.</summary>
+    public System.Func<string>? PvpStatus { get; set; }
+
     /// <summary>Binds one setting with its F1 name and position.</summary>
-    private ConfigEntry<T> Bind<T>(string section, string key, T defaultValue, string name, string description)
+    private ConfigEntry<T> Bind<T>(string section, string key, T defaultValue, string name, string description,
+        System.Action<ConfigEntryBase>? drawer = null)
     {
-        var display = new ConfigurationManagerAttributes { DispName = name, Order = _order-- };
+        var display = new ConfigurationManagerAttributes { DispName = name, Order = _order--, CustomDrawer = drawer };
         return _config.Bind(section, key, defaultValue, new ConfigDescription(description, null, display));
+    }
+
+    /// <summary>
+    /// F1's usual toggle, followed by whether the arrows show in this game, so the PvP rule hiding them never looks like a
+    /// broken setting.
+    /// </summary>
+    private void DrawAllowInPvp(ConfigEntryBase entry)
+    {
+        AllowInPvp.Value = GUILayout.Toggle(AllowInPvp.Value, AllowInPvp.Value ? "Enabled" : "Disabled", GUILayout.ExpandWidth(false));
+        GUILayout.Label(PvpStatus?.Invoke() ?? string.Empty, GUILayout.ExpandWidth(true));
     }
 }

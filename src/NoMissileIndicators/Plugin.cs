@@ -29,6 +29,7 @@ public sealed class Plugin : BaseUnityPlugin
         CopyOldSettings(savedBefore);
         _missileArrows = new IncomingMissileArrows(_settings);
         _pvpGate = new PvpGate(_settings, Logger);
+        _settings.PvpStatus = () => _pvpGate.Status;
         if (!IncomingMissileArrows.ArrowFieldFound)
         {
             Logger.LogWarning("CombatHUD.targetArrow is missing in this game version: no missile arrows.");

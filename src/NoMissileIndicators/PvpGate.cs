@@ -27,6 +27,17 @@ internal sealed class PvpGate
         _logger = logger;
     }
 
+    /// <summary>Whether the arrows show right now and why, for the line F1 draws beside Allow in PvP.</summary>
+    public string Status =>
+        !_settings.Enabled.Value ? "Now: off (General > Enabled)"
+        : !_settings.ShowMissileArrows.Value ? "Now: off (Show missile arrows)"
+        : _verdict switch
+        {
+            PvpVerdict.NotPvp => "Now: shown, not a PvP game",
+            PvpVerdict.Pvp => _settings.AllowInPvp.Value ? "Now: shown in a PvP game" : "Now: hidden, a player is on a hostile side",
+            _ => _settings.AllowInPvp.Value ? "Now: shown" : "Now: hidden until the players are known",
+        };
+
     public bool HidesArrows()
     {
         if (Time.unscaledTime >= _nextCheck)

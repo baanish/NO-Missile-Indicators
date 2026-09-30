@@ -12,4 +12,7 @@ internal sealed class ConfigurationManagerAttributes
 
     /// <summary>Position within the section: F1 lists higher numbers first.</summary>
     public int? Order;
+
+    /// <summary>Draws the setting's value in place of F1's own control.</summary>
+    public System.Action<BepInEx.Configuration.ConfigEntryBase>? CustomDrawer;
 }
