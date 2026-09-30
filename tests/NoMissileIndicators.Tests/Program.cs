@@ -8,6 +8,7 @@ internal static class Program
         tests.AddRange(ScreenEdgeTests.All);
         tests.AddRange(KnownPositionsTests.All);
         tests.AddRange(OldSettingsImportTests.All);
+        tests.AddRange(PvpRuleTests.All);
 
         var failed = 0;
         foreach (var (name, test) in tests)

@@ -19,6 +19,7 @@ public sealed class Plugin : BaseUnityPlugin
 
     private ModSettings _settings = null!;
     private IncomingMissileArrows _missileArrows = null!;
+    private PvpGate _pvpGate = null!;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public sealed class Plugin : BaseUnityPlugin
         _settings = new ModSettings(Config);
         CopyOldSettings(savedBefore);
         _missileArrows = new IncomingMissileArrows(_settings);
+        _pvpGate = new PvpGate(_settings, Logger);
         if (!IncomingMissileArrows.ArrowFieldFound)
         {
             Logger.LogWarning("CombatHUD.targetArrow is missing in this game version: no missile arrows.");
@@ -66,7 +68,7 @@ public sealed class Plugin : BaseUnityPlugin
     {
         Guard(() =>
         {
-            if (!_settings.Enabled.Value)
+            if (!_settings.Enabled.Value || _pvpGate.HidesArrows())
             {
                 // A no-op once the arrows are gone, so the switch takes effect the frame it flips in F1. The arrows
                 // rebuild on their next render, so switching back on needs nothing more.
