@@ -25,10 +25,10 @@ NO Missile Indicators itself hasn't been checked in game yet. The arrow code is 
 | --- | --- | --- |
 | Missile arrows | Partly observed in Baanish UI Improvements | An arrow points at an incoming missile off screen and follows the game's own HUD marker for it. Getting shot down once disabled the mod, a bug since fixed. A missile behind you and two missiles at once weren't recorded as separate checks. |
 | Multiplayer | Observed in Baanish UI Improvements 0.4.0 | A multiplayer session showed no problems. Whether a missile came in during it wasn't recorded. |
-| Plugin loads | Not yet checked | `NO Missile Indicators 0.1.0 loaded.` in `LogOutput.log`. |
-| Alongside NO Map Overhaul | Not yet checked | Both load, and each missile gets one arrow. |
-| Settings copied from the old mod | Not yet checked | With `com.baanish.nuclearoption.uiimprovements.cfg` in place and no settings file of this mod's own, the log says `Copied 2 missile arrow settings`, and F1 shows the old values. |
+| Plugin loads | Observed | `NO Missile Indicators 0.1.0 loaded.` in `LogOutput.log`. |
+| Alongside NO Map Overhaul | Observed | Both load, and each missile gets one arrow. |
+| Settings copied from the old mod | Observed | With `com.baanish.nuclearoption.uiimprovements.cfg` in place and no settings file of this mod's own, the log said `Copied 2 missile arrow settings`, and F1 showed the old values. |
 | Master switch | Not yet checked | Turning General → Enabled off in F1 removes the arrows, and turning it back on restores them. |
-| Off in PvP | Not yet checked | In a multiplayer game with a human on the other faction, no arrows and one `Missile arrows hidden` log line; Allow in PvP brings them back. In co-op against AI, arrows show. |
+| Off in PvP | Partly observed | In a multiplayer match with no other players, the arrows show, the log says `Missile arrows shown: no other player is on a hostile faction.`, and F1's Allow in PvP row reads `Now: shown, not a PvP game`. A match with a human on the other faction, where the arrows should hide, isn't checked yet. |
 
 "Observed" means seen in game during manual testing. It doesn't mean an automated test covers it.
