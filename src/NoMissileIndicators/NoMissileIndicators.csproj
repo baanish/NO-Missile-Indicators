@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>NoMissileIndicators</AssemblyName>
     <RootNamespace>NoMissileIndicators</RootNamespace>
-    <Version>0.1.0</Version>
-    <Description>Arrows on the screen edge toward incoming missiles in Nuclear Option.</Description>
+    <Version>0.2.0</Version>
+    <Description>Arrows around the HUD toward incoming missiles in Nuclear Option.</Description>
     <Authors>baanish</Authors>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

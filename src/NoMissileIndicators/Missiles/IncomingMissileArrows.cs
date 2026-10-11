@@ -10,11 +10,13 @@ using NumericsVector3 = System.Numerics.Vector3;
 namespace NoMissileIndicators.Missiles;
 
 /// <summary>
-/// One arrow on the screen edge per incoming missile outside the view, so it can be found and shot down.
+/// One arrow on a ring around the screen centre per incoming missile outside the view, so it can be found and shot down.
 /// Only missiles the game already warns you about count (<see cref="MissileWarning.knownMissiles"/>), and each arrow
 /// points where the game's own flashing HUD marker for that missile sits (<see cref="MissileTrack"/>), so the arrows
 /// reveal nothing the HUD doesn't. Each arrow is a copy of the game's own off-screen target arrow from
-/// <see cref="CombatHUD"/>, so it shares the HUD canvas, sprite, and visibility.
+/// <see cref="CombatHUD"/>, so it shares the HUD canvas, sprite, and visibility. It flashes as the game's missile warning does.
+/// The ProjectWingman style draws a <see cref="WingmanSphere"/> plate toward every warned missile instead, in one
+/// <see cref="WingmanSphereGraphic"/> beside the target arrow.
 /// </summary>
 internal sealed class IncomingMissileArrows
 {
@@ -25,6 +27,9 @@ internal sealed class IncomingMissileArrows
     private readonly KnownPositions _known = new();
     private CombatHUD? _hud;
     private Image? _source;
+    private readonly List<WingmanShape> _shapes = new();
+    private WingmanSphereGraphic? _sphere;
+    private IndicatorStyle _style;
 
     public IncomingMissileArrows(ModSettings settings) => _settings = settings;
 
@@ -33,6 +38,12 @@ internal sealed class IncomingMissileArrows
 
     public void Render()
     {
+        if (_style != _settings.Style.Value)
+        {
+            Reset();
+            _style = _settings.Style.Value;
+        }
+
         var hud = SceneSingleton<CombatHUD>.i;
         if (hud == null || !EnsureSource(hud))
         {
@@ -49,6 +60,11 @@ internal sealed class IncomingMissileArrows
         {
             var halfScreen = new NumericsVector2(Screen.width * 0.5f, Screen.height * 0.5f);
             var focalPixels = halfScreen.Y / Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+            var ringRadius = Screen.height * _settings.RingSize.Value / 100f;
+            // The game's flash for a locked missile's notch indicator (ThreatItem.AnimateItem): yellow to red, about 3 Hz.
+            var flashing = Color.Lerp(_settings.FlashColor.Value, _settings.MissileArrowColor.Value, Mathf.Sin(Time.timeSinceLevelLoad * 20f) + 0.5f);
+            var sphere = _style == IndicatorStyle.ProjectWingman ? Sphere() : null;
+            sphere?.Clear();
             foreach (var missile in warning.knownMissiles)
             {
                 if (missile == null || missile.disabled)
@@ -63,15 +79,27 @@ internal sealed class IncomingMissileArrows
                 }
 
                 var local = camera.transform.InverseTransformPoint(new GlobalPosition(known.X, known.Y, known.Z).ToLocalPosition());
-                if (ScreenEdge.Pin(new NumericsVector3(local.x, local.y, local.z), halfScreen, focalPixels) is not { } pin)
+                var cameraSpace = new NumericsVector3(local.x, local.y, local.z);
+                if (sphere != null)
+                {
+                    _shapes.Clear();
+                    WingmanSphere.Build(cameraSpace, ringRadius, _shapes);
+                    sphere.Add(_shapes, state == TrackState.Live ? 1f : 0.5f); // the game fades an outdated marker to half
+                    shown++;
+                    continue;
+                }
+
+                if (ScreenEdge.OnScreen(cameraSpace, halfScreen, focalPixels))
                 {
                     continue;
                 }
 
+                var pin = ScreenEdge.Pin(cameraSpace, halfScreen, ringRadius);
+
                 var arrow = Arrow(shown++);
                 arrow.transform.position = new Vector3(halfScreen.X + pin.X, halfScreen.Y + pin.Y, 0f);
                 arrow.transform.localEulerAngles = new Vector3(0f, 0f, Mathf.Atan2(pin.Y, pin.X) * Mathf.Rad2Deg - 90f);
-                var color = _settings.MissileArrowColor.Value;
+                var color = flashing;
                 if (state != TrackState.Live)
                 {
                     color.a *= 0.5f; // the game fades an outdated HUD marker to half, too
@@ -80,6 +108,15 @@ internal sealed class IncomingMissileArrows
                 arrow.color = color;
                 arrow.enabled = true;
             }
+        }
+
+        if (_sphere != null)
+        {
+            _sphere.Red = _settings.MissileArrowColor.Value;
+            _sphere.Yellow = _settings.FlashColor.Value;
+            _sphere.PixelScale = Screen.height / 1080f;
+            _sphere.Redraw();
+            _sphere.enabled = shown > 0;
         }
 
         for (var i = shown; i < _arrows.Count; i++)
@@ -99,6 +136,12 @@ internal sealed class IncomingMissileArrows
         }
 
         _arrows.Clear();
+        if (_sphere != null)
+        {
+            Object.Destroy(_sphere.gameObject);
+        }
+
+        _sphere = null;
         _known.Forget();
         _hud = null;
         _source = null;
@@ -134,7 +177,8 @@ internal sealed class IncomingMissileArrows
     /// </summary>
     private bool EnsureSource(CombatHUD hud)
     {
-        if (ReferenceEquals(_hud, hud) && _source != null && (_arrows.Count == 0 || _arrows[0] != null))
+        if (ReferenceEquals(_hud, hud) && _source != null && (_arrows.Count == 0 || _arrows[0] != null) &&
+            (_sphere is null || _sphere != null))
         {
             return true;
         }
@@ -148,6 +192,20 @@ internal sealed class IncomingMissileArrows
         _hud = hud;
         _source = source;
         return true;
+    }
+
+    private WingmanSphereGraphic Sphere()
+    {
+        if (_sphere != null)
+        {
+            return _sphere;
+        }
+
+        _sphere = new GameObject("NoMissileIndicatorSphere", typeof(RectTransform)).AddComponent<WingmanSphereGraphic>();
+        _sphere.gameObject.layer = _source!.gameObject.layer;
+        _sphere.transform.SetParent(_source.transform.parent, false);
+        _sphere.raycastTarget = false;
+        return _sphere;
     }
 
     private Image Arrow(int index)

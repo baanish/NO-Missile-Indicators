@@ -6,6 +6,7 @@ internal static class Program
     {
         var tests = new List<(string Name, Action Test)>();
         tests.AddRange(ScreenEdgeTests.All);
+        tests.AddRange(WingmanSphereTests.All);
         tests.AddRange(KnownPositionsTests.All);
         tests.AddRange(OldSettingsImportTests.All);
         tests.AddRange(PvpRuleTests.All);
