@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\src\NoMissileIndicators\Missiles\ScreenEdge.cs" Link="Missiles\ScreenEdge.cs" />
+    <Compile Include="..\..\src\NoMissileIndicators\Missiles\WingmanSphere.cs" Link="Missiles\WingmanSphere.cs" />
     <Compile Include="..\..\src\NoMissileIndicators\Tracking\KnownPositions.cs" Link="Tracking\KnownPositions.cs" />
     <Compile Include="..\..\src\NoMissileIndicators\OldSettingsImport.cs" Link="OldSettingsImport.cs" />
     <Compile Include="..\..\src\NoMissileIndicators\PvpRule.cs" Link="PvpRule.cs" />

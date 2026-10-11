@@ -6,7 +6,7 @@ using NoMissileIndicators.Missiles;
 namespace NoMissileIndicators;
 
 /// <summary>
-/// Arrows on the screen edge toward incoming missiles outside the view. Nothing in the game is patched: the plugin reads
+/// Arrows on a ring around the HUD toward incoming missiles outside the view. Nothing in the game is patched: the plugin reads
 /// the game's own CombatHUD and missile warning every frame and draws on top, so a game update that moves something
 /// fails loudly in the log instead of corrupting game state.
 /// </summary>
@@ -15,7 +15,7 @@ public sealed class Plugin : BaseUnityPlugin
 {
     public const string PluginGuid = "com.baanish.nuclearoption.missileindicators";
     public const string PluginName = "NO Missile Indicators";
-    public const string PluginVersion = "0.1.0";
+    public const string PluginVersion = "0.2.0";
 
     private ModSettings _settings = null!;
     private IncomingMissileArrows _missileArrows = null!;

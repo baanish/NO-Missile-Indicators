@@ -1,8 +1,16 @@
 # NO Missile Indicators
 
-My Nuclear Option mod that puts a red arrow on the screen edge for each incoming missile outside your view. The arrow points the way to turn, so you can find the missile and shoot it down. A missile behind you gets its arrow on the side it's on, and once the missile is on screen its arrow goes away.
+My Nuclear Option mod that marks every incoming missile, so you can find it in time to break its lock or shoot it down. **Missile Arrows → Style** picks the look.
 
-**To install, follow the [install guide](docs/INSTALL.md).** The mod isn't in the Nuclear Option Mod Manager catalog yet.
+**Arrows**, the default. A red arrow on a ring around your HUD points the way to turn toward each missile outside your view, flashing red and yellow like the game's missile warning. A missile behind you gets its arrow on the side it's on, and the arrow goes away once the missile is on screen.
+
+![Four flashing arrows on a ring around the HUD, two on each side](docs/images/arrows-ring.jpg)
+
+**Project Wingman.** Every warned missile gets a 3D plate on a sphere around you, turned to face it, the way Project Wingman draws its missile indicator. The side facing the missile is red and the back is yellow. You see the red side only when a missile is well behind you, from about half past four round to half past seven. Anywhere else you see the yellow back. The plate sits toward the missile on a sphere you see from a little above, so a missile level with you lands just below the middle of the screen when it's behind you and just above when it's ahead, and a missile above or below you moves its plate up or down as well.
+
+![Two red plates for missiles behind and two yellow plates for missiles ahead, around the HUD](docs/images/project-wingman-closeup.jpg)
+
+**To install, follow the [install guide](docs/INSTALL.md),** or install NO Missile Indicators from Nuclear Option Mod Manager.
 
 ## It shows only what the game's warning knows
 
