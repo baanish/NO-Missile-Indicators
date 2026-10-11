@@ -5,7 +5,8 @@ your view, pointing the way to turn, so you can find it and shoot it down. A
 missile behind you gets its arrow on the side it's on. The arrows flash red
 and yellow, as the game's missile warning does. A Project Wingman style
 shows each missile as a 3D triangle on a sphere around you, turned to face
-it: red when the missile is behind you, yellow when it's ahead.
+it. It's red when the missile is well behind you and yellow elsewhere, and
+it sits below the middle of the screen for a missile behind you.
 
 Only missiles the game's missile warning already knows about get an arrow,
 and each arrow points where the game's own HUD marker for that missile is.

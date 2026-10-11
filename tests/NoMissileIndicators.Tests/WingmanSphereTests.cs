@@ -17,6 +17,7 @@ internal static class WingmanSphereTests
         ("a missile to the left is a slanted plate on the left", MissileLeftIsThinPlateOnLeft),
         ("a missile to the right has yellow corner bars running in", MissileRightHasYellowBarsPointingIn),
         ("a missile straight above still gets a plate at the top", MissileAboveGetsPlateAtTop),
+        ("red shows from about half past four to half past seven", RedShowsOnlyWellBehind),
     };
 
     private static void MissileBehindShowsRedFaceLarge()
@@ -65,6 +66,15 @@ internal static class WingmanSphereTests
     {
         var face = Plate(Build(new Vector3(0, 1000, 0)));
         Expect(Centroid(face).Y > 0.5f * Ring && !float.IsNaN(face.A.X), $"expected a plate at the top, got {Centroid(face)}");
+    }
+
+    /// <summary>The user guide's claim: yellow at four o'clock (120 deg off the nose), red at five (150 deg), both below the middle.</summary>
+    private static void RedShowsOnlyWellBehind()
+    {
+        var fourOClock = Build(new Vector3(MathF.Sin(MathF.PI * 2f / 3f), 0, MathF.Cos(MathF.PI * 2f / 3f)) * 1000f);
+        var fiveOClock = Build(new Vector3(MathF.Sin(MathF.PI * 5f / 6f), 0, MathF.Cos(MathF.PI * 5f / 6f)) * 1000f);
+        Expect(Plate(fourOClock).Part == WingmanPart.Back && Centroid(Plate(fourOClock)).Y < 0f, "expected a yellow plate below the middle at four o'clock");
+        Expect(Plate(fiveOClock).Part == WingmanPart.Front && Centroid(Plate(fiveOClock)).Y < 0f, "expected a red plate below the middle at five o'clock");
     }
 
     private static List<WingmanShape> Build(Vector3 cameraSpace)

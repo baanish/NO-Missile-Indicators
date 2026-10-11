@@ -8,10 +8,10 @@ This page separates automated checks from in-game observations. A screenshot fro
 dotnet run --project tests/NoMissileIndicators.Tests -c Release
 ```
 
-30 tests pass. They cover:
+31 tests pass. They cover:
 
 - indicator placement (`ScreenEdge`): which missiles are on screen (never one behind), the matching side of the ring off screen, the correct side for a missile behind you, above and behind, or dead astern, and a ring larger than the screen stopping at its edge;
-- the Project Wingman plate (`WingmanSphere`): a missile behind shows the red front and hides the yellow back, large, below the middle; one ahead the yellow back, smaller, above the middle; one left or right a slanted plate on that side, with its corner bars running in; and a missile straight above;
+- the Project Wingman plate (`WingmanSphere`): a missile behind shows the red front and hides the yellow back, large, below the middle; one ahead the yellow back, smaller, above the middle; one left or right a slanted plate on that side, with its corner bars running in; a yellow plate at four o'clock and a red one at five, both below the middle; and a missile straight above;
 - tracked positions (`KnownPositions`): live, stale, first seen stale, and never known;
 - copying the old settings (`OldSettingsImport`): a real Baanish UI Improvements 0.4.0 settings file, the 0.5.0 section layout, which layout wins, a saved value of this mod's own stopping the copy, and no old file;
 - the PvP rule (`PvpRule`): single player, co-op against AI, humans only on your side, one hostile human, a faction change, a player with no faction yet counting as PvP, and an unreadable faction or player list.
