@@ -63,7 +63,7 @@ public readonly struct WingmanShape
 /// and turned to face it, red on the side facing the missile and yellow behind, with a yellow bar standing out of the back
 /// at each corner, square to the plate, into the sphere. The sphere sits just ahead of the camera and is seen from a little
 /// above, as Project Wingman's chase camera sees its sphere around the aircraft, so its perspective reads from the cockpit
-/// too: a missile behind shows a large red triangle below the middle, one ahead a small yellow one above it, and one to
+/// too: a missile dead astern shows a large red triangle below the middle, one dead ahead a small yellow one above it, and one to
 /// the side a plate seen at a slant at that side. Only faces turned toward the camera are kept, each lit from above and in
 /// front. Units are the distance from the camera to the sphere's centre.
 /// </summary>
@@ -73,8 +73,9 @@ public static class WingmanSphere
     public const float Radius = 0.25f;
 
     /// <summary>
-    /// How far above the sphere the view sits, as Project Wingman's chase camera looks down on its sphere: a missile behind
-    /// shows below the middle, one ahead above it, and plates facing you are seen at enough of a slant to show their bars.
+    /// How far above the sphere the view sits, as Project Wingman's chase camera looks down on its sphere: a missile dead
+    /// astern shows below the middle, one dead ahead above it, and plates facing you are seen at enough of a slant to show
+    /// their bars.
     /// </summary>
     private const float ViewPitchDegrees = 20f;
 

@@ -6,7 +6,7 @@ My Nuclear Option mod that marks every incoming missile, so you can find it in t
 
 ![Four flashing arrows on a ring around the HUD, two on each side](docs/images/arrows-ring.jpg)
 
-**Project Wingman.** Every warned missile gets a 3D plate on a sphere around you, turned to face it, the way Project Wingman draws its missile indicator. The side facing the missile is red and the back is yellow. You see the red side only when a missile is well behind you, from about half past four round to half past seven. Anywhere else you see the yellow back, so read the plate's position too: below the middle of the screen means behind you.
+**Project Wingman.** Every warned missile gets a 3D plate on a sphere around you, turned to face it, the way Project Wingman draws its missile indicator. The side facing the missile is red and the back is yellow. You see the red side only when a missile is well behind you, from about half past four round to half past seven. Anywhere else you see the yellow back. The plate sits toward the missile on a sphere you see from a little above, so a missile level with you lands just below the middle of the screen when it's behind you and just above when it's ahead, and a missile above or below you moves its plate up or down as well.
 
 ![Two red plates for missiles behind and two yellow plates for missiles ahead, around the HUD](docs/images/project-wingman-closeup.jpg)
 

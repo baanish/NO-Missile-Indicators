@@ -9,7 +9,7 @@
 ### Added
 
 - The arrows flash between `Missile Arrows → Color` (red) and the new `FlashColor` (yellow) about three times a second, as the game's missile warning flashes, so they read as urgent.
-- `Missile Arrows → Style`: `ProjectWingman` shows every warned missile as Project Wingman's 3D indicator: a solid triangular plate with a yellow block at each corner, on a sphere just ahead of the camera seen from a little above, at the point toward the missile and turned to face it. Its side toward the missile is red (`Color`) and its back yellow (`FlashColor`), and you see the red side only for a missile from about half past four round to half past seven. A missile behind you sits below the middle of the screen and one ahead above it, so a rear-quarter missile shows a yellow plate below the middle.
+- `Missile Arrows → Style`: `ProjectWingman` shows every warned missile as Project Wingman's 3D indicator: a solid triangular plate with a yellow block at each corner, on a sphere just ahead of the camera seen from a little above, at the point toward the missile and turned to face it. Its side toward the missile is red (`Color`) and its back yellow (`FlashColor`), and you see the red side only for a missile from about half past four round to half past seven. For a missile level with you, behind lands just below the middle of the screen and ahead just above it; a missile above or below you moves its plate up or down as well.
 
 ## 0.1.0 - 2026-09-30
 

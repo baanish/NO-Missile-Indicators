@@ -18,6 +18,7 @@ internal static class WingmanSphereTests
         ("a missile to the right has yellow corner bars running in", MissileRightHasYellowBarsPointingIn),
         ("a missile straight above still gets a plate at the top", MissileAboveGetsPlateAtTop),
         ("red shows from about half past four to half past seven", RedShowsOnlyWellBehind),
+        ("a missile behind and above shows red above the middle", MissileBehindAboveShowsRedAboveMiddle),
     };
 
     private static void MissileBehindShowsRedFaceLarge()
@@ -75,6 +76,13 @@ internal static class WingmanSphereTests
         var fiveOClock = Build(new Vector3(MathF.Sin(MathF.PI * 5f / 6f), 0, MathF.Cos(MathF.PI * 5f / 6f)) * 1000f);
         Expect(Plate(fourOClock).Part == WingmanPart.Back && Centroid(Plate(fourOClock)).Y < 0f, "expected a yellow plate below the middle at four o'clock");
         Expect(Plate(fiveOClock).Part == WingmanPart.Front && Centroid(Plate(fiveOClock)).Y < 0f, "expected a red plate below the middle at five o'clock");
+    }
+
+    /// <summary>Why the user guide ties above and below the middle to a missile level with you: elevation moves the plate too.</summary>
+    private static void MissileBehindAboveShowsRedAboveMiddle()
+    {
+        var plate = Plate(Build(new Vector3(0, 1000, -1000)));
+        Expect(plate.Part == WingmanPart.Front && Centroid(plate).Y > 0f, $"expected a red plate above the middle, got {plate.Part} at {Centroid(plate)}");
     }
 
     private static List<WingmanShape> Build(Vector3 cameraSpace)
