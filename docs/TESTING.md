@@ -34,7 +34,7 @@ NO Missile Indicators itself hasn't been checked in game yet. The arrow code is 
 
 ## In-game status for the ring and the flashing arrows
 
-Automated in-game check by an agent through NO-Agentic-Framework, not yet a person's flight: Nuclear Option 0.34.2 (Steam build 24724372), BepInEx 5.4.23.4, the branch build swapped into the installed mod stack, single-player `airborne` mission in a Multirole1 at 1920x1080 in the cockpit view, four AAM2s spawned around the jet while it turned, on 2026-10-11. A before and after video from the same setup compares v0.1.0.
+Aanish approved the look from in-game screenshots and a before and after video on 2026-10-11. Those came from an automated in-game check by an agent through NO-Agentic-Framework, not a person's flight: Nuclear Option 0.34.2 (Steam build 24724372), BepInEx 5.4.23.4, the branch build swapped into the installed mod stack, single-player `airborne` mission in a Multirole1 at 1920x1080 in the cockpit view, four AAM2s spawned around the jet while it turned, on 2026-10-11. A before and after video from the same setup compares v0.1.0.
 
 | Area | Status | Evidence or remaining work |
 | --- | --- | --- |

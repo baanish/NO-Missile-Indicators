@@ -64,6 +64,8 @@ internal sealed class IncomingMissileArrows
             // The game's flash for a locked missile's notch indicator (ThreatItem.AnimateItem): yellow to red, about 3 Hz.
             var flashing = Color.Lerp(_settings.FlashColor.Value, _settings.MissileArrowColor.Value, Mathf.Sin(Time.timeSinceLevelLoad * 20f) + 0.5f);
             var sphere = _style == IndicatorStyle.ProjectWingman ? Sphere() : null;
+            // The sphere's plates sit at its rim on every side, so it stops short of the screen's top and bottom.
+            var sphereRadius = Mathf.Min(ringRadius, halfScreen.Y * 0.85f);
             sphere?.Clear();
             foreach (var missile in warning.knownMissiles)
             {
@@ -83,7 +85,7 @@ internal sealed class IncomingMissileArrows
                 if (sphere != null)
                 {
                     _shapes.Clear();
-                    WingmanSphere.Build(cameraSpace, ringRadius, _shapes);
+                    WingmanSphere.Build(cameraSpace, sphereRadius, _shapes);
                     sphere.Add(_shapes, state == TrackState.Live ? 1f : 0.5f); // the game fades an outdated marker to half
                     shown++;
                     continue;

@@ -46,7 +46,7 @@ The table lists the settings in the order F1 shows them.
 | General | Enabled | Enabled | `true` | Off hides everything the mod draws, as if it were not installed. Use it to check whether a problem comes from the mod or the game. |
 | Missile Arrows | Show missile arrows | ShowArrows | `true` | Point an arrow at each incoming missile outside the view. |
 | Missile Arrows | Style | Style | `Arrows` | `Arrows`: a flashing arrow toward each missile outside the view. `ProjectWingman`: a 3D triangle toward every warned missile, red when it's behind you and yellow when it's ahead. |
-| Missile Arrows | Ring size | RingSize | `30` | Radius of the ring the arrows sit on, or of the `ProjectWingman` sphere, in percent of the screen height, from 10 to 150. 150 puts arrows on the screen edge. |
+| Missile Arrows | Ring size | RingSize | `30` | Radius of the ring the arrows sit on, or of the `ProjectWingman` sphere, in percent of the screen height, from 10 to 200. 200 puts arrows on the screen edge, even on a 32:9 screen. The sphere stops short of the screen's top and bottom. |
 | Missile Arrows | Allow in PvP | AllowInPvp | `false` | Also show the arrows in player-versus-player games. There they may be a competitive advantage, so only turn this on when the other players know and agree. |
 | Missile Arrows | Arrow colour | Color | `FF4033FF` | Colour the arrows flash from, and of the side of a `ProjectWingman` plate facing the missile. |
 | Missile Arrows | Flash colour | FlashColor | `FFEB04FF` | Colour the arrows flash to, and of the back and corner blocks of a `ProjectWingman` plate. |

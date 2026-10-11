@@ -4,7 +4,7 @@
 
 ### Changed
 
-- The arrows sit on a ring around the HUD instead of the screen edge, so they're near where you're looking. `Missile Arrows → RingSize` sets its radius in percent of the screen height (default 30); 150 puts them back on the screen edge.
+- The arrows sit on a ring around the HUD instead of the screen edge, so they're near where you're looking. `Missile Arrows → RingSize` sets its radius in percent of the screen height (default 30); 200 puts them back on the screen edge.
 
 ### Added
 
