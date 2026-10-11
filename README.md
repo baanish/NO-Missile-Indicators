@@ -10,7 +10,7 @@ My Nuclear Option mod that marks every incoming missile, so you can find it in t
 
 ![Two red plates for missiles behind and two yellow plates for missiles ahead, around the HUD](docs/images/project-wingman-closeup.jpg)
 
-**To install, follow the [install guide](docs/INSTALL.md).** The mod isn't in the Nuclear Option Mod Manager catalog yet.
+**To install, follow the [install guide](docs/INSTALL.md),** or install NO Missile Indicators from Nuclear Option Mod Manager.
 
 ## It shows only what the game's warning knows
 
